@@ -3,7 +3,8 @@
 # And the CLI then renames it
 
 # node files
-dist/
+# Comment out dist folder, in order to have it available on our fork
+# dist/
 node_modules/
 
 # iOS files
