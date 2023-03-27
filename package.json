@@ -81,7 +81,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npx pretty-quick --staged"
+      "pre-commit": "npx pretty-quick --staged && npm run build"
     }
   },
   "homepage": "https://github.com/capacitor-community/barcode-scanner#readme",
