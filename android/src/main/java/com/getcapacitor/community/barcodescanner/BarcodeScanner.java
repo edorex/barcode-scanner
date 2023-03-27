@@ -421,23 +421,18 @@ public class BarcodeScanner extends Plugin implements BarcodeCallback {
                 // on runtime,
                 // each permission can be temporarily denied,
                 // or be denied forever
-                if (neverAsked || getActivity().shouldShowRequestPermissionRationale(PERMISSION_NAME)) {
-                    // permission never asked before
-                    // OR
-                    // permission DENIED, BUT not for always
-                    // So
-                    // can be asked (again)
-                    if (force) {
-                        // request permission
-                        // so a callback can be made from the handleRequestPermissionsResult
-                        requestPermissionForAlias(PERMISSION_ALIAS_CAMERA, call, "cameraPermsCallback");
-                        return;
-                    }
-                } else {
-                    // permission DENIED
-                    // user ALSO checked "NEVER ASK AGAIN"
-                    this.savedReturnObject.put(DENIED, true);
+
+                // START CHANGE: do always ask for permission
+
+                if (force) {
+                    // request permission
+                    // so a callback can be made from the handleRequestPermissionsResult
+                    requestPermissionForAlias(PERMISSION_ALIAS_CAMERA, call, "cameraPermsCallback");
+                    return;
                 }
+                
+                // END CHANGE
+                
             } else {
                 // below android M
                 // no runtime permissions exist
